@@ -1,0 +1,29 @@
+.data-commands {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-upload-button {
+    margin-right: 5px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    outline: none;
+}
+
+.search-button {
+    width: 60%;
+    align-self: center;
+    font-size: 18px;
+}

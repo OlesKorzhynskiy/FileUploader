@@ -1,6 +1,5 @@
 export interface Transaction {
-    amount: number;
-    currencyCode: string;
-    date: Date;
+    id: string;
+    payment: string;
     status: string;
 }

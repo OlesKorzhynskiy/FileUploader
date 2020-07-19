@@ -27,5 +27,12 @@ namespace FileUploader.API.Controllers
 
             return Ok();
         }
+
+        [HttpGet]
+        public async Task<ActionResult<List<TransactionResponseModel>>> Get([FromQuery] TransactionFilterModel filterModel)
+        {
+            var result = await _transactionService.Get(filterModel);
+            return Ok(result);
+        }
     }
 }

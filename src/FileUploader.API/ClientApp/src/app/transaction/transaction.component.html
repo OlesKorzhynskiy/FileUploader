@@ -1,1 +1,63 @@
-<input type="file" (change)="onChange($event)" >
+<div class="data-commands">
+  <label class="file-upload-button btn btn-primary">
+    <input type="file" (change)="onChange($event)" />
+    Upload
+  </label>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="openFilterModal(filterTemplate)"
+  >
+    Filter
+  </button>
+</div>
+
+<table class="table" *ngIf="transactions && transactions.length > 0">
+  <thead>
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactions">
+      <td>{{ transaction.id }}</td>
+      <td>{{ transaction.payment }}</td>
+      <td>{{ transaction.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #filterTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Filter</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="currencyControl">Currency</label>
+      <input type="text" class="form-control" id="currencyControl" [(ngModel)]="filter.currency" >
+    </div>
+    <div class="form-group">
+      <label for="startDateTimeControl">StartDateTime</label>
+      <input type="date" class="form-control" id="startDateTimeControl" [(ngModel)]="filter.startDateTime" >
+    </div>
+    <div class="form-group">
+      <label for="endDateTimeControl">EndDateTime</label>
+      <input type="date" class="form-control" id="endDateTimeControl" [(ngModel)]="filter.endDateTime" >
+    </div>
+    <div class="form-group">
+      <label for="statusControl">Status</label>
+      <input type="text" class="form-control" id="statusControl" [(ngModel)]="filter.status" >
+    </div>
+    <button class="btn btn-primary search-button" (click)="fetch()">Search</button>
+  </div>
+</ng-template>

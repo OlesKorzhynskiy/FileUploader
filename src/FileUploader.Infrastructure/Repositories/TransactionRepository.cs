@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FileUploader.Domain.Entities;
 using FileUploader.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace FileUploader.Infrastructure.Repositories
 {
@@ -22,6 +24,11 @@ namespace FileUploader.Infrastructure.Repositories
 
             await Context.Set<Transaction>().AddRangeAsync(entities);
             await Context.SaveChangesAsync();
+        }
+
+        public IQueryable<Transaction> GetAll()
+        {
+            return Context.Set<Transaction>();
         }
 
         private bool _disposed = false;
