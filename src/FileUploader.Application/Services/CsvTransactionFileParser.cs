@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using CsvHelper;
+using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 using FileUploader.Application.Interfaces;
 using FileUploader.Domain.Entities;
@@ -26,6 +27,7 @@ namespace FileUploader.Application.Services
 
             csv.Configuration.TypeConverterOptionsCache.AddOptions<DateTime>(options);
             csv.Configuration.HasHeaderRecord = false;
+            csv.Configuration.TrimOptions = TrimOptions.Trim;
 
             var records = csv.GetRecords<Transaction>();
 

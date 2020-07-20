@@ -34,7 +34,8 @@ export class TransactionComponent implements OnInit {
     formData.append("file", data.target.files[0]);
 
     this.httpClient.post(this.baseUrl + 'api/transaction', formData).subscribe(result => {
-      this.toastrService.success('Success!');
+      this.toastrService.success('File was uploaded', 'Success!');
+      this.fetch();
     }, error => {
       let errorMessage = this.getErrorDisplayText(error.error);
       this.toastrService.error(errorMessage, 'Error!');
@@ -59,7 +60,7 @@ export class TransactionComponent implements OnInit {
 
     this.httpClient.get(this.baseUrl + 'api/transaction', { params: httpParams }).subscribe((result: Transaction[]) => {
       this.transactions = result;
-      this.toastrService.success('Success!');
+      this.toastrService.success('Fetched data', 'Success!');
     }, error => {
       let errorMessage = this.getErrorDisplayText(error.error);
       this.toastrService.error(errorMessage, 'Error!');

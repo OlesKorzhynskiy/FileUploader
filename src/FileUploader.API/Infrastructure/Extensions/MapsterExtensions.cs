@@ -14,7 +14,7 @@ namespace FileUploader.API.Infrastructure.Extensions
             TypeAdapterConfig<Transaction, TransactionResponseModel>
                 .NewConfig()
                 .Map(dest => dest.Payment, src => $"{src.Amount} {src.CurrencyCode}")
-                .Map(dest => dest.Status, src => Constants.StatusMap[src.Status]);
+                .Map(dest => dest.Status, src => Constants.StatusMap[src.Status.Trim()]);
 
             return services;
         }

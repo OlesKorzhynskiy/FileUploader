@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using FileUploader.Domain;
 using FileUploader.Domain.Repositories;
 using FileUploader.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 namespace FileUploader.Infrastructure
 {
