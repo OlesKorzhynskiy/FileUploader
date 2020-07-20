@@ -9,6 +9,6 @@ namespace FileUploader.Application.Interfaces
     {
         Task AddAsync(IFormFile file);
 
-        Task<List<TransactionResponseModel>> Get(TransactionFilterModel filterModel);
+        Task<List<TransactionResponseModel>> GetAsync(TransactionFilterModel filterModel);
     }
 }

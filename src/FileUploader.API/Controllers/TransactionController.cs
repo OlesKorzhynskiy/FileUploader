@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using FileUploader.Application.Interfaces;
 using FileUploader.Application.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FileUploader.API.Controllers
@@ -24,14 +23,13 @@ namespace FileUploader.API.Controllers
         public async Task<IActionResult> UploadFileAsync([FromForm] UploadFileRequestModel model)
         {
             await _transactionService.AddAsync(model.File);
-
             return Ok();
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<TransactionResponseModel>>> Get([FromQuery] TransactionFilterModel filterModel)
+        public async Task<ActionResult<List<TransactionResponseModel>>> GetAsync([FromQuery] TransactionFilterModel filterModel)
         {
-            var result = await _transactionService.Get(filterModel);
+            var result = await _transactionService.GetAsync(filterModel);
             return Ok(result);
         }
     }

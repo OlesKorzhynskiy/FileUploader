@@ -33,7 +33,7 @@ namespace FileUploader.Application.Services
             await _unitOfWork.Transactions.AddRangeAsync(transactions);
         }
 
-        public async Task<List<TransactionResponseModel>> Get(TransactionFilterModel filterModel)
+        public async Task<List<TransactionResponseModel>> GetAsync(TransactionFilterModel filterModel)
         {
             var transactions = await GetFiltered(filterModel);
             var result = transactions.Adapt<List<TransactionResponseModel>>();
@@ -42,7 +42,7 @@ namespace FileUploader.Application.Services
 
         private async Task<List<Transaction>> GetFiltered(TransactionFilterModel filterModel)
         {
-            var transactions = _unitOfWork.Transactions.GetAll();
+            var transactions = _unitOfWork.Transactions.GetAllAsync();
 
             if (!string.IsNullOrEmpty(filterModel.Status))
             {

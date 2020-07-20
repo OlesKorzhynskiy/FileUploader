@@ -11,6 +11,6 @@ namespace FileUploader.Domain.Repositories
     {
         Task AddRangeAsync(IEnumerable<Transaction> entity);
 
-        IQueryable<Transaction> GetAll();
+        IQueryable<Transaction> GetAllAsync();
     }
 }

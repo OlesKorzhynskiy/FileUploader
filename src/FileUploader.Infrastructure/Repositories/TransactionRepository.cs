@@ -26,7 +26,7 @@ namespace FileUploader.Infrastructure.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public IQueryable<Transaction> GetAll()
+        public IQueryable<Transaction> GetAllAsync()
         {
             return Context.Set<Transaction>();
         }
